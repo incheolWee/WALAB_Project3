@@ -2,7 +2,7 @@
 <ol>
   <li><h2>프로그램 파일 설명<h2></li>
   <li><h2>사용된 라이브러리<h2>
-    <ol>
+    <h5><ol>
       <li>BufferedReader</li>
       <li>IOException</li>
       <li>InputStreamReader</li>
@@ -12,7 +12,8 @@
       <li>Collections</li>
       <li>Comparator</li>
       <li>List</li>
-    </ol>
+    </ol>  
+  </h5>
 
   </li>
 </ol>
