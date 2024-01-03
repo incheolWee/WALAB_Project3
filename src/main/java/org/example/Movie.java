@@ -22,7 +22,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return num+"\t"
+        return (num+1)+"\t"
                 +name +"\t\t"+
                 genre +"\t\t" +
                 runningTime+"m" +"\t\t"+
