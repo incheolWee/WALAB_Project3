@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -24,7 +26,7 @@ private List<Movie> list;
         System.out.println("5. 영화 검색");
         System.out.println("6. 영화 별점 순위");
         System.out.println("0. 프로그램 종료");
-        System.out.println("====================================");
+        System.out.println("=========================================");
     }
     public boolean menuChoose(String input){
         switch (input) {
@@ -147,8 +149,8 @@ private List<Movie> list;
             System.out.println("데이터가 존재하지 않습니다.");
             return;
         }
-        System.out.println("NO  영화제목    장르  상영시간    누적관객수   기록날자    영화평점");
-        System.out.println("=============================================================");
+        System.out.println("NO  영화제목        장르      상영시간    누적관객수      기록날자     영화평점");
+        System.out.println("=========================================================================");
         for (Movie m : list) {
             System.out.println(m.toString());
         }
@@ -178,8 +180,8 @@ private List<Movie> list;
                 for (Movie m : list) {
                     if (m.getName().contains(name)) {
                         if (!check) {
-                            System.out.println("NO  영화제목    장르  상영시간    누적관객수   기록날자    영화평점");
-                            System.out.println("=============================================================");
+                            System.out.println("NO  영화제목        장르      상영시간    누적관객수      기록날자     영화평점");
+                            System.out.println("=========================================================================");
                             check = true;
                         }
                         System.out.println(m.toString());
@@ -201,8 +203,8 @@ private List<Movie> list;
                     for (Movie m : list) {
                         if (m.getGenre().contains(genre)) {
                             if (!check) {
-                                System.out.println("NO  영화제목    장르  상영시간    누적관객수   기록날자    영화평점");
-                                System.out.println("=============================================================");
+                                System.out.println("NO  영화제목        장르      상영시간    누적관객수      기록날자     영화평점");
+                                System.out.println("=========================================================================");
                                 check = true;
                             }
                             System.out.println(m.toString());
@@ -220,7 +222,18 @@ private List<Movie> list;
 
 
     private void topRanking() {
+        if (list.isEmpty()) {
+            System.out.println("데이터가 존재하지 않습니다.");
+            return;
+        }
+       List<Movie> term=list;
+        Collections.sort(term, Comparator.comparing(Movie::getRating_Point).reversed());
+        System.out.println("NO  영화제목        장르      상영시간    누적관객수      기록날자     영화평점");
+        System.out.println("=========================================================================");
 
+        for (Movie m : term) {
+            System.out.println(m.toString());
+        }
     }
 
     private boolean valid(int num) {

@@ -22,11 +22,11 @@ public class Movie {
 
     @Override
     public String toString() {
-        return (num+1)+"\t"
-                +name +"\t\t"+
-                genre +"\t\t" +
-                runningTime+"m" +"\t\t"+
-                viewor+"M"+"\t\t"+
+        return String.format("%2d",(num+1)) +"\t"
+                + String.format("%-7s",name) +"\t"+
+                String.format("%5s",genre) +"\t\t" +
+                String.format("%4d",runningTime)+"m" +"\t\t"+
+                String.format("%4d",viewor)+"M"+"\t\t"+
                 regDate+"\t\t"+
                 String.format("%.1f",rating_Point);
     }
