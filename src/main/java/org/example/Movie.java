@@ -25,7 +25,7 @@ public class Movie {
         return num+"\t"
                 +name +"\t\t"+
                 genre +"\t\t" +
-                runningTime +"\t\t"+
+                runningTime+"m" +"\t\t"+
                 viewor+"M"+"\t\t"+
                 regDate+"\t\t"+
                 String.format("%.1f",rating_Point);

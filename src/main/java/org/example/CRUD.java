@@ -72,7 +72,7 @@ private List<Movie> list;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        m.setNum(this.list.size()+1);
+        m.setNum(this.list.size());
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String regDate = date.format(formatter);
@@ -90,7 +90,7 @@ private List<Movie> list;
        }
        try{
            readData();
-           System.out.println("수집할 번호 입력");
+           System.out.println("수정할 번호 입력");
            br = new BufferedReader(new InputStreamReader(System.in));
            int num = Integer.parseInt(br.readLine()) -1;
            if(valid(num)){
@@ -119,8 +119,27 @@ private List<Movie> list;
     }
 
     private  void deleteData() {
-        // Placeholder implementation
-        System.out.println("영상 삭제 기능은 아직 구현되지 않았습니다.");
+        if(this.list.isEmpty()){
+            System.out.println("데이터가 존재하지 않았습니다!");
+            return;
+        }
+       try{
+           readData();
+           System.out.println("삭제할 영화 번호를 입력하세요");
+           br = new BufferedReader(new InputStreamReader(System.in));
+           int num = Integer.parseInt(br.readLine())-1;
+           if(valid(num)) {
+               this.list.remove(num);
+               for (int i = 0; i < list.size(); i++) {
+                   this.list.get(i).setNum(i);
+               }
+               System.out.println("삭제되었습니다.");
+           }else{
+               deleteData();
+           }
+       }catch (IOException e){
+           e.printStackTrace();
+       }
     }
 
     private void readData() {
@@ -141,6 +160,7 @@ private List<Movie> list;
     }
 
     private void topRanking() {
+
     }
 
     private boolean valid(int num) {
