@@ -37,12 +37,14 @@
         <li>영화 삭제<br>
         <img src="image/image_delete.png"/>
           </li>
-       <li>영화 검색
+       <li>영화 검색<br>
         <p>영화 이름으로 검색</p>
        <img src="image/image_search_1.png"/>
        <p>영화 장르로 검색</p>
        <img src="image/image_search_2.png"/>
          </li>
-       <li>영화 검색
+       <li>영화 평점순으로 정렬<br>
+        <img src="image/image_topRating.png"/>
+         </li>
      </ol>  
 </ol>
