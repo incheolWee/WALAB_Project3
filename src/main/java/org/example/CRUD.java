@@ -226,14 +226,17 @@ private List<Movie> list;
             System.out.println("데이터가 존재하지 않습니다.");
             return;
         }
-       List<Movie> term=list;
-        Collections.sort(term, Comparator.comparing(Movie::getRating_Point).reversed());
+      //평점으로 내림차순 정렬
+        Collections.sort(list, Comparator.comparing(Movie::getRating_Point).reversed());
+
         System.out.println("NO  영화제목        장르      상영시간    누적관객수      기록날자     영화평점");
         System.out.println("=========================================================================");
 
-        for (Movie m : term) {
+        for (Movie m : list) {
             System.out.println(m.toString());
         }
+        // num 으로 오름차순으로 정렬
+        Collections.sort(list, Comparator.comparing(Movie::getNum));
     }
 
     private boolean valid(int num) {
