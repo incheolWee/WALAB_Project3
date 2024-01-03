@@ -22,21 +22,27 @@
   </li>
   <li><h2>프로그램 실행 화면 및 설명</h2></li>
      <ol>
-       <li>프로그램 실행 </li>
+       <li>프로그램 실행<br>
           <img src="image/image_start.png"/>
-       <li>영화 추가</li>
+         </li>
+       <li>영화 추가<br>
        <img src="image/image_create.png"/>
-       <li>영화 리스트 보기</li>
+         </li>
+       <li>영화 리스트 보기<br>
        <img src="image/image_read.png"/>
-       <li>영화 수정</li>
+         </li>
+       <li>영화 수정<br>
         <img src="image/image_update.png"/>
-        <li>영화 삭제</li>
+         </li>
+        <li>영화 삭제<br>
         <img src="image/image_delete.png"/>
+          </li>
        <li>영화 검색
         <p>영화 이름으로 검색</p>
        <img src="image/image_search_1.png"/>
        <p>영화 장르로 검색</p>
        <img src="image/image_search_2.png"/>
          </li>
+       <li>영화 검색
      </ol>  
 </ol>
