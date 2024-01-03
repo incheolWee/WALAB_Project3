@@ -46,5 +46,8 @@
        <li>영화 평점순으로 정렬<br>
         <img src="image/image_topRating.png"/>
          </li>
+        </li>프로그램 종료<br>
+       <img src="image/image_end_program.png"/>
+        </li>
      </ol>  
 </ol>
