@@ -2,7 +2,7 @@
 <ol>
   <li><h2>프로그램 파일 설명</h2></li>
     <ol>
-       <li>Main: 프로그램이 실행되는 클래스</li>
+      <li>Main: 프로그램이 실행되는 클래스</li>
       <li>Movie: 프로그램에서 사용되는 객체를 정의한 클래스</li>
       <li>CRUD: 객체를 사용하여 CRUD 및 기타 기능을 수행하는 클래스</li>
     </ol>  
@@ -21,5 +21,12 @@
 
   </li>
   <li><h2>프로그램 실행 화면 및 설명</h2></li>
-  
+     <ol>
+       <li>프로그램 실행 </li>
+          <img src="image/image_start.png"/>
+       <li>영화 추가</li>
+       <img src="image/image_create.png"/>
+       <li>영화 리스트 보기</li>
+       <img src="image/image_read.png"/>
+     </ol>  
 </ol>
