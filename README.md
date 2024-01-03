@@ -28,5 +28,15 @@
        <img src="image/image_create.png"/>
        <li>영화 리스트 보기</li>
        <img src="image/image_read.png"/>
+       <li>영화 수정</li>
+        <img src="image/image_update.png"/>
+        <li>영화 삭제</li>
+        <img src="image/image_delete.png"/>
+       <li>영화 검색
+        <p>영화 이름으로 검색</p>
+       <img src="image/image_search_1.png"/>
+       <p>영화 장르로 검색</p>
+       <img src="image/image_search_2.png"/>
+         </li>
      </ol>  
 </ol>
