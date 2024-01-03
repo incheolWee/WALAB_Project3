@@ -155,34 +155,69 @@ private List<Movie> list;
     }
 
     private void searchData() {
-        if( this.list.isEmpty()){
+        if (this.list.isEmpty()) {
             System.out.println("데이터가 존재하지 않습니다");
             return;
         }
-        System.out.println("검색할 영화를 입력하세요");
         br = new BufferedReader(new InputStreamReader(System.in));
+        String type = null;
         try {
-            String name = br.readLine();
-            boolean check = false;
-            for (Movie m : list) {
-                if (m.getName().contains(name)) {
-                    if (!check) {
-                        System.out.println("NO  영화제목    장르  상영시간    누적관객수   기록날자    영화평점");
-                        System.out.println("=============================================================");
-                        check = true;
-                    }
-                    System.out.println(m.toString());
-                }
-            }
-            if(!check){
-                System.out.println("검색 결과가 없습니다.");
-            }
+            System.out.println("1) 영화 이름 검색  2) 영화 장르 검색");
+            type = br.readLine();
 
-        }catch (IOException e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-    }
+        if (type.equals("1")) {
+            System.out.println("검색할 영화 제목을 입력하세요");
+
+            try {
+                String name = br.readLine();
+                boolean check = false;
+                for (Movie m : list) {
+                    if (m.getName().contains(name)) {
+                        if (!check) {
+                            System.out.println("NO  영화제목    장르  상영시간    누적관객수   기록날자    영화평점");
+                            System.out.println("=============================================================");
+                            check = true;
+                        }
+                        System.out.println(m.toString());
+                    }
+                }
+                if (!check) {
+                    System.out.println("검색 결과가 없습니다.");
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(type.equals("2")){
+                System.out.println("검색할 영화 장르를 입력하세요");
+
+                try {
+                    String genre = br.readLine();
+                    boolean check = false;
+                    for (Movie m : list) {
+                        if (m.getGenre().contains(genre)) {
+                            if (!check) {
+                                System.out.println("NO  영화제목    장르  상영시간    누적관객수   기록날자    영화평점");
+                                System.out.println("=============================================================");
+                                check = true;
+                            }
+                            System.out.println(m.toString());
+                        }
+                    }
+                    if (!check) {
+                        System.out.println("검색 결과가 없습니다.");
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
 
     private void topRanking() {
 
