@@ -17,45 +17,8 @@ private List<Movie> list;
     public CRUD(){
         this.list = new ArrayList<>();
     }
-    public void printMenu() {
-        System.out.println("=============[ 보고 싶은 영화 ] ==========");
-        System.out.println("1. 영화 추가");
-        System.out.println("2. 영화 수정");
-        System.out.println("3. 영화 삭제");
-        System.out.println("4. 영화 리스트 보기");
-        System.out.println("5. 영화 검색");
-        System.out.println("6. 영화 별점 순위");
-        System.out.println("0. 프로그램 종료");
-        System.out.println("=========================================");
-    }
-    public boolean menuChoose(String input){
-        switch (input) {
-                case "1":
-                    addData();
-                    break;
-                case "2":
-                    editData();
-                    break;
-                case "3":
-                    deleteData();
-                    break;
-                case "4":
-                    readData();
-                    break;
-                case "5":
-                    searchData();
-                    break;
-                case "6":
-                    topRanking();
-                    break;
-                case "0":
-                    System.out.println("프로그램을 종료 합니다!");
-                    return false;
-                default:
-                    System.out.println("잘못된 입력 입니다.");
-            }
-       return true;
-    }
+
+
 
     private void addData() {
         Movie m = new Movie();
