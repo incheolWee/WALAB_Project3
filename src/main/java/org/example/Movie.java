@@ -1,5 +1,10 @@
 package org.example;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Movie {
     private int num; //순서
     private  String name; //영화 이름
@@ -31,60 +36,4 @@ public class Movie {
                 String.format("%.1f",rating_Point);
     }
 
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getRunningTime() {
-        return runningTime;
-    }
-
-    public void setRunningTime(int runningTime) {
-        this.runningTime = runningTime;
-    }
-
-    public int getViewor() {
-        return viewor;
-    }
-
-    public void setViewor(int viewor) {
-        this.viewor = viewor;
-    }
-
-
-    public String getRegDate() {
-        return regDate;
-    }
-
-    public void setRegDate(String regDate) {
-        this.regDate = regDate;
-    }
-
-    public double getRating_Point() {
-        return rating_Point;
-    }
-
-    public void setRating_Point(double rating_Point) {
-        this.rating_Point = rating_Point;
-    }
 }
