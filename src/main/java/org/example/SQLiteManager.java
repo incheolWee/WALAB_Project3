@@ -38,4 +38,13 @@ public class SQLiteManager {
         }
     }
     //DB연결  객체 가져오기
+    public static Connection getConnection() throws SQLException{
+
+        if( conn == null || conn.isValid(OPT_VALID_TIMEOUT) ) {
+            closeConnection();      // 연결 종료
+            createConnection();     // 연결
+        }
+
+        return conn;
+    }
 }
