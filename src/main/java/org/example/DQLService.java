@@ -54,7 +54,7 @@ public class DQLService {
         //조회된 데이터 리스트
         return selected;
     }
-    public List<Map<String, Object>>electByName(String name){
+    public List<Map<String, Object>>selectByName(String name){
         //조회 결과 변수
         final Set<String> columnNames = new HashSet<String>();
         final List<Map<String, Object>> selected = new ArrayList<Map<String, Object>>();

@@ -13,21 +13,67 @@ import java.util.Map;
 public class Main {
 
     public static void main(String [] args) throws SQLException {
-        CRUD m = new CRUD();
-        Menu menu = new Menu();
-        System.out.println("--------------프로그램을 시작합니다--------------");
+
+
         int result = -1;
-        Connection conn = SQLiteManager.getConnection();
+        Connection conn =SQLiteManager.getConnection();
+        List<Map<String, Object>> resultList;
 
-        boolean check = true;
+        Menu m = new Menu();
+        CRUD crud = new CRUD();
+        SearchService searchService = new SearchService();
+        DDLService DDL = new DDLService(conn);
+        DMLService DML = new DMLService(conn);
+        DQLService DQL = new DQLService(conn);
 
-        while(check) {
+        DDL.createTable();
+
+        System.out.println("=======시작========");
+        while(true){
             try{
-                menu.printMenu();
-                BufferedReader sbr = new BufferedReader(new InputStreamReader(System.in));
-                String input = sbr.readLine();
-                check = m.menuChoose(input);
-            }catch (IOException e){
+                String choose = m.printMenu();
+                switch (choose){
+                    case "1":
+                        result = DML.insertMovie(crud.addData());
+                        if(result>=0){
+                            System.out.println("추가되었습니다");
+                        }else{
+                            System.out.println("데이터 입력 실패");
+                        }
+                        break;
+
+                    case "2":
+                        crud.readData(DQL);
+                        result = DML.updateMovie(crud.editData());
+                        if(result >= 0){
+                            System.out.println("수정되었습니다");
+                        }else{
+                            System.out.println("데이터 수정 실패");
+                        }
+                        break;
+                    case "3":
+                        crud.readData(DQL);
+                        result = DML.deleteMovie(crud.deleteData());
+                        if(result >= 0){
+                            System.out.println("삭제되었습니다");
+                        }else{
+                            System.out.println("데이터 삭제 실패");
+                        }
+                        break;
+                    case "4":
+                        crud.readData(DQL);
+                        break;
+                    case "5":
+                        resultList = DQL.selectByName(searchService.searchByName());
+                        DQL.printMapList(resultList);
+                        break;
+                    case "0":
+                        System.out.println("종료");
+                        return ;
+                    default:
+                        System.out.println("잘못된 메뉴 선택");
+                }
+            }catch(IOException e){
                 e.printStackTrace();
             }
         }

@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class DMLService {
 
-    final String INSERT_SQL = "INSERT INTO movie (name, genre, running_Time, viewor, regDate, rating_Point) VALUES (?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE movie SET name = ? , genre = ?, running_Time= ? , viewor= ? , regDate= ? , rating_Point= ? WHERE num = ?";
+    final String INSERT_SQL = "INSERT INTO movie (name, genre, runningTime, viewor, regDate, rating_Point) VALUES (?,?,?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE movie SET name = ? , genre = ?, runningTime= ? , viewor= ? , regDate= ? , rating_Point= ? WHERE num = ?";
     final String DELETE_SQL = "DELETE FROM movie WHERE num = ? ";
 
     Connection conn;
@@ -26,7 +26,7 @@ public class DMLService {
             pstmt = conn.prepareStatement(INSERT_SQL);
             pstmt.setObject(1, dataMap.get("name"));
             pstmt.setObject(2, dataMap.get("genre"));
-            pstmt.setObject(3, dataMap.get("running_Time"));
+            pstmt.setObject(3, dataMap.get("runningTime"));
             pstmt.setObject(4, dataMap.get("viewor"));
             pstmt.setObject(5, dataMap.get("regDate"));
             pstmt.setObject(6, dataMap.get("rating_Point"));
@@ -79,7 +79,7 @@ public class DMLService {
         return updated;
     }
 
-    public int deletePerson(int num) throws SQLException {
+    public int deleteMovie(int num) throws SQLException {
         int deleted = 0;
         try {
             pstmt = conn.prepareStatement(DELETE_SQL);
