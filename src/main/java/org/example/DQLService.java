@@ -109,7 +109,7 @@ public class DQLService {
             String regDate = (String) map.get("regDate");
             double rating_Point = Double.parseDouble(map.get("rating_Point").toString());
 
-           System.out.println( String.format("%2d",(num+1)) +"\t"
+           System.out.println( String.format("%2d",(num)) +"\t"
                     + String.format("%-7s",name) +"\t"+
                     String.format("%5s",genre) +"\t\t" +
                     String.format("%4d",runningTime)+"m" +"\t\t"+
