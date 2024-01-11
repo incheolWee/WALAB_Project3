@@ -64,7 +64,7 @@
         <img src="image/image_topRating.png" width="400" height="400"/>
          </li>
         </li>프로그램 종료 Exit<br>
-       <img src="image/image_end_program.png" width="400" height="400"/>
+       <img src="image/image_end.png" width="400" height="400"/>
         </li>
      </ol>  
 </ol>
