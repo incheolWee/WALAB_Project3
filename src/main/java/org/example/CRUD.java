@@ -12,7 +12,7 @@ public class CRUD {
 BufferedReader br;
 
   public HashMap<String,Object> addData() {
-        int num;
+
         String name;
         String genre;
         int runningTime;
