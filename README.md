@@ -3,9 +3,15 @@
 <ol>
   <li><h2>프로그램 파일 설명</h2></li>
     <ol>
-      <li>Main: 프로그램이 실행되는 클래스</li>
+      <li>CRUD: CRUD를 구현하는 클래스</li>
+      <li>DDLService: DDL이 작동하는 클래스, 테이블이 없다면 생성</li>
+      <li>DMLService: DML이 작동하는 클래스, </li>
+      <li>DQLService: DQL이 작동하는 클래스, </li>
+      <li>Main: 모든 클래스들을 사용하여 프로그램이 작동하는 Main클래스</li>
+      <li>Menu: 메뉴를 출력하는 클래스</li>
       <li>Movie: 프로그램에서 사용되는 객체를 정의한 클래스</li>
-      <li>CRUD: 객체를 사용하여 CRUD 및 기타 기능을 수행하는 클래스</li>
+      <li>SearchService: 검색 기능이 있는 서비스 (제목 ,장르)</li>
+      <li>SQLiteManager: SQL connection을 확인하는 클래스</li>
     </ol>  
   <li><h2>사용된 라이브러리</h2>
    <ol>
