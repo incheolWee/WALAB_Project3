@@ -10,12 +10,6 @@ import java.util.*;
 
 public class CRUD {
 BufferedReader br;
-private List<Movie> list;
-    public CRUD(){
-        this.list = new ArrayList<>();
-    }
-
-
 
   public HashMap<String,Object> addData() {
         int num;
@@ -124,13 +118,4 @@ private List<Movie> list;
      dql.printMapList(resultList);
     }
 
-    private boolean valid(int num) {
-        // 배열 범위
-        if (this.list.size() <= num || num == -1) {
-            System.out.println("없는 번호 입니다.");
-            return false;
-        }
-
-        return true;
-    }
 }
