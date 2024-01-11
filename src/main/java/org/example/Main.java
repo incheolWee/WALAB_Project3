@@ -25,6 +25,7 @@ public class Main {
         DDLService DDL = new DDLService(conn);
         DMLService DML = new DMLService(conn);
         DQLService DQL = new DQLService(conn);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         DDL.createTable();
 
@@ -64,8 +65,18 @@ public class Main {
                         crud.readData(DQL);
                         break;
                     case "5":
-                        resultList = DQL.selectByName(searchService.searchByName());
-                        DQL.printMapList(resultList);
+                        System.out.println("1) 영화 이름 검색  2) 영화 장르 검색");
+                        String input = br.readLine();
+                        if(input.equals("1")) {
+                            resultList = DQL.selectByName(searchService.searchByName());
+                            DQL.printMapList(resultList);
+                        }else if(input.equals("2")){
+                            resultList = DQL.selectByGenre(searchService.searchByGenre());
+                            DQL.printMapList(resultList);
+                        }
+                        break;
+                    case "6":
+                        crud.topRanking(DQL);
                         break;
                     case "0":
                         System.out.println("종료");

@@ -51,19 +51,20 @@ public class DMLService {
         int updated = 0;
         try {
             pstmt = conn.prepareStatement(UPDATE_SQL);
+
             pstmt.setObject(1, updateMap.get("name"));
             pstmt.setObject(2, updateMap.get("genre"));
             pstmt.setObject(3, updateMap.get("runningTime"));
             pstmt.setObject(4, updateMap.get("viewor"));
             pstmt.setObject(5, updateMap.get("regDate"));
             pstmt.setObject(6, updateMap.get("rating_Point"));
+            pstmt.setObject(7, updateMap.get("updateID"));
             pstmt.executeUpdate();
 
             updated = pstmt.getUpdateCount();
             conn.commit();
 
         } catch (SQLException e) {
-
             System.out.println(e.getMessage());
             updated = -1;
             conn.rollback();

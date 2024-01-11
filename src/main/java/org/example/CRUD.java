@@ -71,25 +71,24 @@ private List<Movie> list;
        try{
            System.out.println("수정할 번호 입력");
            br = new BufferedReader(new InputStreamReader(System.in));
+
            num = Integer.parseInt(br.readLine());
            updateMap.put("updateID",num);
-
-               System.out.println("영화 제목을 입력하세요");
-               br = new BufferedReader(new InputStreamReader(System.in));
-               name = (br.readLine());
-               updateMap.put("name", name);
-               System.out.println("영화 장르를 입력하세요 ex)드라마, 공포, 액션, 코미디");
-               genre = (br.readLine());
-               updateMap.put("genre", genre);
-               System.out.println("영화 상영 시간을 입력하세요 ex)분으로만 입력");
-               runningTime=(Integer.parseInt(br.readLine()));
-               updateMap.put("runningTime",runningTime);
-               System.out.println("누적 관객 수를 입력하세요 *단위는 만 입니다.*  M");
-               viewor =(Integer.parseInt(br.readLine()));
-               updateMap.put("viewor", viewor);
-               System.out.println("영화의 평점을 입력하세요 (10점 만점)");
-               rating_Point =(Float.parseFloat(br.readLine()));
-               updateMap.put("rating_Point", rating_Point);
+           System.out.println("영화 제목을 입력하세요");
+           name = (br.readLine());
+           updateMap.put("name" , name);
+           System.out.println("영화 장르를 입력하세요 ex)드라마, 공포, 액션, 코미디");
+           genre = (br.readLine());
+           updateMap.put("genre"    , genre);
+           System.out.println("영화 상영 시간을 입력하세요 ex)분으로만 입력");
+           runningTime=(Integer.parseInt(br.readLine()));
+           updateMap.put("runningTime"  ,runningTime);
+           System.out.println("누적 관객 수를 입력하세요 *단위는 만 입니다.*  M");
+           viewor =(Integer.parseInt(br.readLine()));
+           updateMap.put("viewor"   , viewor);
+           System.out.println("영화의 평점을 입력하세요 (10점 만점)");
+           rating_Point =(Float.parseFloat(br.readLine()));
+           updateMap.put("rating_Point" , rating_Point);
        } catch (IOException e) {
            e.printStackTrace();
        }
@@ -120,24 +119,9 @@ private List<Movie> list;
     }
 
 
-
-
-    private void topRanking() {
-        if (list.isEmpty()) {
-            System.out.println("데이터가 존재하지 않습니다.");
-            return;
-        }
-      //평점으로 내림차순 정렬
-        Collections.sort(list, Comparator.comparing(Movie::getRating_Point).reversed());
-
-        System.out.println("NO  영화제목        장르      상영시간    누적관객수      기록날자     영화평점");
-        System.out.println("=========================================================================");
-
-        for (Movie m : list) {
-            System.out.println(m.toString());
-        }
-        // num 으로 오름차순으로 정렬
-        Collections.sort(list, Comparator.comparing(Movie::getNum));
+    public void topRanking(DQLService dql) {
+     List<Map<String,Object>> resultList =  dql.selectByOrder();
+     dql.printMapList(resultList);
     }
 
     private boolean valid(int num) {

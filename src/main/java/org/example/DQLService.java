@@ -8,6 +8,8 @@ public class DQLService {
     final String SELECTBYNAME_SQL = "SELECT * FROM movie WHERE NAME = ? ";
     final String SELECTBYGENRE_SQL = "SELECT * FROM movie WHERE genre = ?";
 
+    final String SELECTBYORDER_SQL = "SELECT * FROM movie ORDER BY rating_Point DESC";
+
     Connection conn;
     PreparedStatement pstmt;
     ResultSetMetaData meta;
@@ -54,14 +56,14 @@ public class DQLService {
         //조회된 데이터 리스트
         return selected;
     }
-    public List<Map<String, Object>>selectByName(String name){
+    public List<Map<String, Object>>selectByGenre(String genre){
         //조회 결과 변수
         final Set<String> columnNames = new HashSet<String>();
         final List<Map<String, Object>> selected = new ArrayList<Map<String, Object>>();
         try{
           //죄회 데이터 조건 매핑
-            pstmt = conn.prepareStatement(SELECTBYNAME_SQL);
-            pstmt.setObject(1,name);
+            pstmt = conn.prepareStatement(SELECTBYGENRE_SQL);
+            pstmt.setObject(1,genre);
             ResultSet rs = pstmt.executeQuery();
             meta= pstmt.getMetaData();
             for(int i =1; i<=meta.getColumnCount(); i++){
@@ -117,6 +119,82 @@ public class DQLService {
                     regDate+"\t\t"+
                     String.format("%.1f",rating_Point));
         }
+    }
+
+    public List<Map<String, Object>>selectByName(String name){
+        //조회 결과 변수
+        final Set<String> columnNames = new HashSet<String>();
+        final List<Map<String, Object>> selected = new ArrayList<Map<String, Object>>();
+        try{
+            //죄회 데이터 조건 매핑
+            pstmt = conn.prepareStatement(SELECTBYNAME_SQL);
+            pstmt.setObject(1,name);
+            ResultSet rs = pstmt.executeQuery();
+            meta= pstmt.getMetaData();
+            for(int i =1; i<=meta.getColumnCount(); i++){
+                columnNames.add(meta.getColumnName(i));
+            }
+            Map<String, Object> resultMap = null;
+            while(rs.next()){
+                resultMap = new HashMap<String, Object>();
+                for(String column : columnNames){
+                    resultMap.put(column, rs.getObject(column));
+                }
+                if(resultMap != null){
+                    selected.add(resultMap);
+                }
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+            try{
+                if(pstmt != null){
+                    pstmt.close();
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return selected;
+    }
+
+    public List<Map<String,Object>> selectByOrder(){
+        final Set<String> columnNames = new HashSet<String>();
+        final List<Map<String, Object>> selected = new ArrayList<Map<String,Object>>();
+        try{
+            pstmt= conn.prepareStatement(SELECTBYORDER_SQL);
+            //데이터 조회
+            ResultSet rs = pstmt.executeQuery();
+            // 조회된 데이터의 컬럼명 저장
+            meta = pstmt.getMetaData();
+            for(int i=1; i<= meta.getColumnCount(); i++){
+                columnNames.add(meta.getColumnName(i));
+            }
+            Map<String , Object > resultMap = null;
+            while(rs.next()){
+                resultMap = new HashMap<String, Object>();
+                for(String column : columnNames){
+                    resultMap.put(column, rs.getObject(column));
+                }
+                if(resultMap != null){
+                    selected.add(resultMap);
+                }
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        } finally  {
+            try {
+                // PreparedStatement 종료
+                if( pstmt != null ) {
+                    pstmt.close();
+                }
+
+            } catch ( SQLException e ) {
+                e.printStackTrace();
+            }
+        }
+        //조회된 데이터 리스트
+        return selected;
     }
 
 
